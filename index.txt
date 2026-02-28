@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melih ❤️ Fatma</title>
+<style>
+/* Genel Stil */
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+color:white;
+text-align:center;
+overflow-x:hidden;
+background:#0a0a20;
+position:relative;
+height:100vh;
+}
+
+/* Yıldızlı arka plan */
+#stars{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+overflow:hidden;
+z-index:-1;
+}
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+opacity:0.8;
+}
+
+/* Giriş Ekranı */
+#loginScreen{
+position:fixed;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#ff69b4,#ff1493);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:10;
+padding:10px;
+}
+
+input{
+padding:12px;
+border-radius:20px;
+border:none;
+text-align:center;
+font-size:16px;
+width:80%;
+max-width:300px;
+}
+
+button{
+margin-top:15px;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:white;
+color:#ff1493;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+.container{
+display:none;
+padding:20px;
+}
+
+h1{
+font-size:32px;
+animation:glow 2s infinite alternate;
+margin-top:20px;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px #fff;}
+to{text-shadow:0 0 30px #fff;}
+}
+
+.message{
+max-width:90%;
+margin:15px auto;
+background:rgba(255,255,255,0.1);
+padding:20px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+font-size:18px;
+}
+
+.photo img{
+width:60%;
+max-width:250px;
+border-radius:20px;
+box-shadow:0 0 20px white;
+margin:15px auto;
+display:block;
+}
+
+#counter{
+margin-top:15px;
+font-size:18px;
+}
+
+/* Kalpler */
+.heart{
+position:fixed;
+color:#ff69b4;
+animation:float 6s linear infinite;
+z-index:5;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+/* Final Butonlar */
+#finalButtons button{
+margin:10px;
+padding:12px 20px;
+font-size:16px;
+}
+
+#finalMessage{
+display:none;
+font-size:20px;
+margin-top:15px;
+animation:fadeIn 2s forwards;
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+</style>
+</head>
+<body>
+
+<!-- Yıldızlı arka plan -->
+<div id="stars"></div>
+
+<!-- Şifre Ekranı -->
+<div id="loginScreen">
+<h2>Melih'in kalbine girmek için şifreyi yaz 💕</h2>
+<input type="password" id="password" placeholder="Şifreyi gir...">
+<button onclick="checkPassword()">Giriş Yap 💖</button>
+<p id="error"></p>
+</div>
+
+<!-- Ana İçerik -->
+<div class="container" id="mainContent">
+
+<h1>Melih ❤️ Fatma</h1>
+
+<div class="message">
+Maşamm 🩷 Fatma… 💕<br><br>
+Sen hayatımın en güzel mucizesisin 🌸<br>
+Gülüşün dünyamı aydınlatıyor ☀️<br>
+Sesin huzur veriyor 🎶<br>
+Varlığın bana güç katıyor 💖<br><br>
+İyi ki varsın, iyi ki benimlesin…
+</div>
+
+<div class="photo">
+<img src="https://prnt.sc/NnVOkAJ1z7hE">
+</div>
+
+<div id="counter"></div>
+
+<!-- Final Butonlar -->
+<div id="finalButtons">
+  <button id="yesBtn">Evet 💍</button>
+  <button id="noBtn">Hayır 😢</button>
+</div>
+
+<div id="finalMessage">
+Cevabın zaten kalbimde yazıyor 💖♾️
+</div>
+
+<!-- Müzik -->
+<audio autoplay loop>
+<source src="https://www.youtube.com/watch?v=e3MC2LDJbPQ" type="audio/mpeg">
+</audio>
+
+<script>
+// Şifre
+function checkPassword(){
+var pass=document.getElementById("password").value;
+if(pass==="180126"){
+document.getElementById("loginScreen").style.display="none";
+document.getElementById("mainContent").style.display="block";
+}else{
+document.getElementById("error").innerHTML="Yanlış şifre 😢";
+}
+}
+
+// Gün Sayacı
+const startDate = new Date("2026-01-18");
+const today = new Date();
+const diffTime = today - startDate;
+const diffDays = Math.floor(diffTime / (1000*60*60*24));
+document.getElementById("counter").innerHTML =
+"18.01.2026'dan beri birlikteyiz 💞<br>" + diffDays + " gündür kalbim seninle atıyor ❤️";
+
+// Kalpler
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+heart.style.animationDuration=(Math.random()*3+3)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove();},6000);
+}
+setInterval(createHeart,300);
+
+// Final Butonlar
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+yesBtn.addEventListener("click", () => {
+document.getElementById("finalMessage").style.display="block";
+for(let i=0;i<50;i++){createHeart();}
+document.getElementById("finalButtons").style.display="none";
+});
+
+// Hayır kaçıyor
+function moveNoBtn(){
+const x = Math.random()*(window.innerWidth-noBtn.offsetWidth);
+const y = Math.random()*(window.innerHeight-noBtn.offsetHeight);
+noBtn.style.position="absolute";
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+}
+
+noBtn.addEventListener("mouseenter", moveNoBtn);
+noBtn.addEventListener("touchstart", moveNoBtn); // Mobil dokunmatik için
+
+// Yıldız oluşturma
+function createStars(){
+for(let i=0;i<100;i++){
+let star = document.createElement("div");
+star.classList.add("star");
+star.style.width = Math.random()*3 + "px";
+star.style.height = star.style.width;
+star.style.top = Math.random()*100 + "vh";
+star.style.left = Math.random()*100 + "vw";
+star.style.opacity = Math.random();
+document.getElementById("stars").appendChild(star);
+}
+}
+createStars();
+</script>
+
+</body>
+</html>
